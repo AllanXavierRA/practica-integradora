@@ -1,5 +1,0 @@
-username=AXRA
-password=p9iI4FRvTzYwpC0B
-
-username=user_eccomerce_coderHouse
-password=LwnOfgElXt94eLP6
