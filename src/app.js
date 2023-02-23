@@ -1,3 +1,5 @@
+import { config } from 'dotenv';
+config();
 import express from 'express';
 import __dirname from './utils.js';
 import handlebars from 'express-handlebars';
@@ -9,7 +11,7 @@ import mongoose from 'mongoose';
 const app = express();
 
 
- mongoose.connect('mongodb+srv://user_eccomerce_coderHouse:LwnOfgElXt94eLP6@eccomercecoderhouse.vsk6ewh.mongodb.net/eccomerceCoderHouse', error => {
+ mongoose.connect( process.env.MONGODB_URL, error => {
   if(error){
     console.log(`No se pudo conectar a la base de datos ${error}`);
     process.exit()
