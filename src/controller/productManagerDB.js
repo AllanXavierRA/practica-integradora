@@ -47,6 +47,24 @@ const productGet = async ( req=request, res=response) => {
 }
 
 
+const productById = async(req=request, res=response) => {
+
+    const {pid} = req.params;
+    const id = Number(pid)
+    const product = await Producto.findOne({ id });
+
+    if(product === null){
+        res.json({
+            message: 'producto no encontrado'
+        })
+    }else{
+        res.json({
+            product
+        })
+    }
+
+
+}
 
 const productDelete = async( req=request, res=response ) => {
     const {pid} = req.params;
@@ -58,8 +76,22 @@ const productDelete = async( req=request, res=response ) => {
     })
 }
 
+const productPut = async(req=request, res=response) => {
+    const {pid} = req.params;
+    const id = Number(pid)
+    const {code, title, description, price, thumbnail, stock} = req.body;
+
+    const product = await Producto.findOneAndUpdate( {id: id}, {title, description, price, thumbnail, stock});
+    res.json({
+        product
+    })
+
+}
+
 export {
     productPost,
     productGet,
-    productDelete
+    productDelete,
+    productById,
+    productPut
 }
